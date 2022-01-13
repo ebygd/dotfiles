@@ -9,7 +9,7 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # Add lvim to path:
-export PATH="${HOME}/.local/bin:$PATH"
+#export PATH="${HOME}/.local/bin:$PATH"
 
 # AUTO SHIT:
 #
@@ -72,6 +72,7 @@ z4h init || return
 
 # Extend PATH.
 path=(~/bin $path)
+path=(~/scripts $path)
 
 # Export environment variables.
 export GPG_TTY=$TTY
@@ -109,8 +110,6 @@ compdef _directories md
 
 # Define aliases.
 alias tree='tree -a -I .git'
-
-# from ./bashrc:
 alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 alias l='ls -lv'   # show long listing but no hidden dotfiles except "."
