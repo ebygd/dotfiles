@@ -10,65 +10,108 @@ scrolling:
   history: 10000
 
 font:
-  # The normal (roman) font face to use.
+  size: 9.0
+    #size: 16.0
   normal:
-    family: hack 
-    # Style can be specified to pick a specific face.
-    style: Regular
-    size: 8.0
-
-  # The bold font face
+    #family: Hack Nerd Font Mono
+    #family: Source Code Pro
+    family: Hack Nerd Font Mono
+    style: Medium
   bold:
-    family: JetBrains Mono Nerd Font
-    # Style can be specified to pick a specific face.
+    family: Hack Nerd Font Mono
     style: Bold
-
-  # The italic font face
   italic:
-    family: JetBrains Mono Nerd Font
-    # Style can be specified to pick a specific face.
+    family: Hack Nerd Font Mono
     style: Italic
-
-    #font:
-    #  normal:
-    #    family: JetBrains Mono Nerd Font
-    #    style:  Medium
-    #  bold:
-    #    family: JetBrains Mono Nerd Font
-    #style:  Bold
-    #italic:
-    #family: JetBrains Mono Nerd Font
-    #style:  MediumItalic
-    #bold_italic:
-    #family: JetBrains Mono Nerd Font
-    #style: BoldItalic
-    size: 8.0
-
-
+    
 draw_bold_text_with_bright_colors: true
-
+  
+# NORD THEME: https://github.com/arcticicestudio/nord-alacritty/blob/develop/src/nord.yml
 colors:
   primary:
-    background: "#11121D"
-    foreground: "#a9b1d6"
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
+  cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  vi_mode_cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  selection:
+    text: CellForeground
+    background: '#4c566a'
+  search:
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    bar:
+      background: '#434c5e'
+      foreground: '#d8dee9'
   normal:
-    black: "#32344a"
-    red: "#f7768e"
-    green: "#9ece6a"
-    yellow: "#e0af68"
-    blue: "#7aa2f7"
-    magenta: "#ad8ee6"
-    cyan: "#449dab"
-    white: "#787c99"
+    black: '#3b4252'
+    red: '#bf616a'
+    red: '#ff6363'
+    green: '#a3be8c'
+    green: '#c6ff63'
+    yellow: '#ebcb8b'
+    blue: '#6391bf'
+    magenta: '#b48ead'
+    cyan: '#7fd4d2'
+    white: '#e5e9f0'
   bright:
-    black: "#444b6a"
-    red: "#ff7a93"
-    green: "#b9f27c"
-    yellow: "#ff9e64"
-    blue: "#7da6ff"
-    magenta: "#bb9af7"
-    cyan: "#0db9d7"
-    white: "#acb0d0"
+    black: '#4c566a'
+    red: '#bf616a'
+    red: '#ff6363'
+    green: '#a3be8c'
+    green: '#c6ff63'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    blue: '#4d98e3'
+    magenta: '#b48ead'
+    cyan: '#73d9d6'
+    white: '#eceff4'
+  dim:
+    black: '#373e4d'
+    red: '#94545d'
+    green: '#809575'
+    yellow: '#b29e75'
+    blue: '#68809a'
+    magenta: '#8c738c'
+    cyan: '#6d96a5'
+    white: '#aeb3bb'
+ 
+  # og:
+# colors:
+#   primary:
+#     background: "#11121D"
+#     foreground: "#a9b1d6"
+#   normal:
+#     black: "#32344a"
+#     red: "#f7768e"
+#     green: "#9ece6a"
+#     yellow: "#e0af68"
+#     blue: "#7aa2f7"
+#     magenta: "#ad8ee6"
+#     cyan: "#449dab"
+#     white: "#787c99"
+#   bright:
+#     black: "#444b6a"
+#     red: "#ff7a93"
+#     green: "#b9f27c"
+#     yellow: "#ff9e64"
+#     blue: "#7da6ff" # OG BLUE
+#       #blue: "#0066FF"
+#     magenta: "#bb9af7"
+      
+#       ## USING MAGENTA AS CUSTOM COLOR ##
+#       #magenta: "#ff0000"
+#     cyan: "#0db9d7"
+#     white: "#acb0d0"
+#       #white: "#ffffff"
+
+ligatures: true
+
 
 background_opacity: 1
 
@@ -85,6 +128,8 @@ shell:
   program: /usr/bin/zsh
 
 key_bindings:
-  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }
-    #funka pikk dårlig:
-    #- { key: Return, mods: Control|Shift, command: { program: "/bin/bash", args: ["-c", opencurrdir] }}
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
