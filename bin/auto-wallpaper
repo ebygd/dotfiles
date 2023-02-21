@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+
+img=(`find ~/Pictures/nordic-wallpapers/ -name '*' -exec file {} \; | grep -o -P '^.+: \w+ image' | cut -d':' -f1`)
+
+# end_time=$(( $(date +%s) + 7200 ))
+end_time=$(( $(date +%s) + 10 ))
+
+while [ "$(date +%s)" -lt $end_time ];
+do
+   notify-send "Wallpaper Changed" -t 1000 -r 9995
+   feh --bg-scale "${img[$RANDOM % ${#img[@]} ]}"
+sleep 10m
+done

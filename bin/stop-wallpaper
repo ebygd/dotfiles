@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the process IDs of all instances of "auto-wallpaper"
+pids=$(ps -A | grep "auto-wallpaper" | awk '{print $1}')
+
+# If there are any instances running
+if [ -n "$pids" ]; then
+  # Loop through all the process IDs
+  for pid in $pids; do
+    # Kill each process
+    kill $pid
+  done
+    notify-send "Paused Auto Wallpaper" -t 1000 -r 9995
+fi
