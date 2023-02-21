@@ -1,0 +1,37 @@
+#!/bin/sh
+
+ALACRITTY_THEME="$HOME/.config/alacritty/themes.yml"
+
+echo "Select theme:"
+echo "1) my-theme"
+echo "2) AlexZyl theme"
+
+read -p "> " selection
+
+if [ "$selection" = "1" ]; then
+  sed '$ d' $ALACRITTY_THEME > ${ALACRITTY_THEME}.tmp && mv ${ALACRITTY_THEME}.tmp $ALACRITTY_THEME
+  echo "colors: *my-theme" >> $ALACRITTY_THEME
+
+  killall -q picom
+  picom -f --experimental-backends > /dev/null &
+
+  killall -q polybar
+  $HOME/.config/polybar/ericmurphybar/launch.sh > /dev/null &
+
+
+elif [ "$selection" = "2" ]; then
+  sed '$ d' $ALACRITTY_THEME > ${ALACRITTY_THEME}.tmp && mv ${ALACRITTY_THEME}.tmp $ALACRITTY_THEME
+  echo "colors: *AlexvZyl" >> $ALACRITTY_THEME
+
+  killall -q picom
+  picom --config ~/.config/alexvZyl-picom/picom.conf -f --experimental-backends > /dev/null &
+
+  #feh --bg-fill ~/Pictures/alex-wp/Cloud_2_Nord.png
+  feh --bg-fill ~/Pictures/nordic-wallpapers/ign_astronaut.png
+
+  killall -q polybar
+  $HOME/.config/alexvZyl-polybar/launch.sh > /dev/null &
+
+else
+  echo "aborting"
+fi
