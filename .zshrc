@@ -47,6 +47,7 @@ export PATH
 alias l="ls -la --color=auto"
 alias ls="ls --color=auto"
 alias systemctllist="systemctl list-units --type=service"
+alias grep="grep --color=auto"
 
 # dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/home/ebygd/.dotfiles/ --work-tree=/home/ebygd'
