@@ -83,3 +83,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Time startup:
 # zprof
+
+alias files='nautilus'

@@ -293,6 +293,10 @@ exec_always xset r rate 240 40
 
 assign [class="discord"] $ws9
 
+# allow for swiping with 3 fingers left/right to swap workspace
+# see .config/libinput-gestures-setup.conf
+exec --no-startup-id libinput-gestures-setup start
+
 # Toggle the inactive opacity for picom.
 bindsym $mod+o exec ~/.config/alexvZyl-picom/scripts/toggle-picom-inactive-opacity.sh && polybar-msg action "#read-mode.exec"
 
