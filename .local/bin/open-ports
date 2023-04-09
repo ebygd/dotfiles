@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [[ "$1" == "help" ]]; then
+  echo "This script opens SSH tunnels to specified ports on a remote host."
+  echo "Usage: open-ports [remote_host] [port1] [port2] ... "
+  echo "Remote hosts: namenode, datanode1, datanode2, datanode3 (default: namenode)"
+  echo "Default ports: namenode (4040, 8080, 19888, 9870, 18080), datanode1-3 (8081, 9864, 8042)"
+  echo "To close ports, use: 'open-ports close'"
+  exit 0
+fi
+
+if [[ "$1" == "close" ]]; then
+  # Terminate all ssh sessions
+  pkill -f "ssh namenode -f -N -L"
+  pkill -f "ssh datanode1 -f -N -L"
+  pkill -f "ssh datanode2 -f -N -L"
+  pkill -f "ssh datanode3 -f -N -L"
+  exit 0
+fi
+
+# Set the default remote host to namenode
+remote_host="namenode"
+# Set the default ports to open for namenode
+ports=(4040 8080 19888 9870 18080)
+
+if [[ $# -gt 0 ]]; then
+  # Check if the first argument is a remote host
+  case "$1" in
+    namenode)
+      ports=(4040 8080 19888 9870 18080)
+      shift ;;
+    datanode1|datanode2|datanode3)
+      remote_host="$1"
+      ports=(8081 9864 8042)
+      shift ;;
+  esac
+fi
+
+if [[ $# -gt 0 ]]; then
+  # Use the provided port numbers
+  ports=("$@")
+fi
+
+for port in "${ports[@]}"; do
+  ssh "$remote_host" -f -N -L "$port:localhost:$port"
+done

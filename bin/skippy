@@ -1,0 +1,3 @@
+#!/bin/sh
+
+skippy-xd --config $HOME/.config/skippy-xd/sippy-xd.rc

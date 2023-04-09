@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Run the command to set charge thresholds
+output=$(sudo tlp setcharge 75 85)
+
+
+# Check if the output contains "no change"
+if [[ "$output" == *"no change"* ]]; then
+  # If "no change" is found, run the fullcharge command
+  sudo tlp fullcharge
+    notify-send "no thresholds" -r 9995 -t 1000
+    echo "no threshold"
+    echo "" > $HOME/.local/state/tlp-status
+else
+    notify-send "setting thresholds" -r 9995 -t 1000
+    echo "threshold"
+    echo "󱞜 " > $HOME/.local/state/tlp-status
+fi
