@@ -5,8 +5,8 @@ source ~/.zplug/init.zsh
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh/histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install

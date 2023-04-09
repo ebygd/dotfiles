@@ -1,0 +1,30 @@
+# /etc/netctl/eduroam
+
+Description='eduroam'
+Interface=wlp0s20f3
+Connection=wireless
+Security=wpa-configsection
+IP=dhcp
+TimeoutWPA=5
+TimeoutUp=300
+TimeoutCarrer=300
+Priority=1
+WPAConfigSection=(
+        'ssid="eduroam"'
+        'scan_ssid=0'
+        'priority=0'
+        'mode=0'
+        'proto=RSN'
+        'key_mgmt=WPA-EAP'
+        'auth_alg=OPEN'
+        'pairwise=CCMP'
+        'group=CCMP'
+        'eap=PEAP'
+        'identity="256425@uis.no"'
+        'anonymous_identity=""'
+        'ca_cert="/usr/share/ca-certificates/trust-source/mozilla.trust.crt"'
+        'password=hash:0a0be74ec1d25a00a66f8967f86db10e'
+# Password hashing ->  echo -n "<password>" | iconv -t utf16le | openssl md4
+        'phase1="peaplabel=0"'
+        'phase2="auth=MSCHAPV2"'
+)
