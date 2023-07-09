@@ -8,6 +8,12 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
+
+-- import the file "copilot.lua", use reload instead of require
+-- reload("copilot.lua")
+
+
+
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
@@ -36,6 +42,8 @@ lvim.keys.insert_mode["jk"] = "<ESC>"
 
 -- esc to remove highlight
 lvim.keys.normal_mode["<ESC>"] = ":noh<cr>"
+
+
 
 
 -- unmap a default keymapping
@@ -181,7 +189,6 @@ formatters.setup {
 -- }
 
 
-
 -- Additional Plugins
 -- uses lazy
 lvim.plugins = {
@@ -191,10 +198,13 @@ lvim.plugins = {
     { 'uloco/bluloco.nvim' },
     { 'petertriho/nvim-scrollbar' },
     { 'AlexvZyl/nordic.nvim' },
-    { 'rrethy/vim-hexokinase',
+    { 'github/copilot.vim' },
+    {
+        'rrethy/vim-hexokinase',
         run = 'make hexokinase'
     },
-    { "folke/todo-comments.nvim",
+    {
+        "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
             require("todo-comments").setup {
@@ -206,7 +216,6 @@ lvim.plugins = {
                 -- DONE = { icon = " ", color = "note", alt = { "DONE(student)" } },
                 -- }
             }
-
         end
     },
     {
@@ -223,7 +232,7 @@ lvim.plugins = {
             autocmd!
             autocmd CmdlineLeave : lua require('scrollbar.handlers.search').handler.hide()
         augroup END
-    ]]       )
+    ]])
         end,
     }
 }
@@ -232,14 +241,14 @@ require("scrollbar").setup({
     show = true,
     show_in_active_only = false,
     set_highlights = true,
-    folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
-    max_lines = false, -- disables if no. of lines in buffer exceeds this
+    folds = 1000,                -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
+    max_lines = false,           -- disables if no. of lines in buffer exceeds this
     hide_if_all_visible = false, -- Hides everything if all lines are visible
     throttle_ms = 100,
     handle = {
         text = " ",
         color = nil,
-        color_nr = nil, -- cterm
+        color_nr = nil,             -- cterm
         highlight = "CursorColumn",
         hide_if_all_visible = true, -- Hides handle if all lines are visible
     },
@@ -366,8 +375,8 @@ require("scrollbar").setup({
         diagnostic = true,
         gitsigns = false, -- Requires gitsigns
         handle = true,
-        search = false, -- Requires hlslens
-        ale = false, -- Requires ALE
+        search = false,   -- Requires hlslens
+        ale = false,      -- Requires ALE
     },
 })
 -- lvim.plugins = {

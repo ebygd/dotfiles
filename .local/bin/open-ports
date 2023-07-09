@@ -15,6 +15,7 @@ if [[ "$1" == "close" ]]; then
   pkill -f "ssh datanode1 -f -N -L"
   pkill -f "ssh datanode2 -f -N -L"
   pkill -f "ssh datanode3 -f -N -L"
+  echo "terminating ssh connections"
   exit 0
 fi
 

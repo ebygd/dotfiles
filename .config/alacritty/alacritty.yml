@@ -3,6 +3,22 @@ window:
     x: 13
     y: 11
 
+# font:
+#   normal:
+#     family: Fantasque Sans Mono
+#     style: Medium 
+#   bold:
+#     family: Fantasque Sans Mono
+#     style: Bold
+#   italic:
+#     family: Fantasque Sans Mono
+#     style: Italic
+
+#   bold_italic:
+#     family: Fantasque Sans Mono
+#     style: Bold
+
+#   size: 10
 font:
   normal:
     family: JetBrainsMono Nerd Font

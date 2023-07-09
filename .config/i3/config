@@ -6,14 +6,15 @@
 #
 ################   SET OPTIONS: ################
 
-set $feh "feh --bg-fill ~/Pictures/nordic-wallpapers/ign_astronaut.png"
+# set $feh "feh --bg-fill ~/Pictures/nordic-wallpapers/ign_astronaut.png"
+set $feh "feh --bg-fill ~/Pictures/wallpapers/d6o6ys2gz9091.png"
 # set $wp "feh --randomize --bg-scale $HOME/Pictures/nordic-wallpapers/*"
 
-# set $picom "picom -f --experimental-backends &"
-set $picom "picom --config ~/.config/alexvZyl-picom/picom.conf -f --experimental-backends &"
+set $picom "picom -f --experimental-backends &"
+#set $picom "picom --config ~/.config/alexvZyl-picom/picom.conf -f --experimental-backends &"
 
-# set $polybar "$HOME/.config/polybar/ericmurphybar/launch.sh"
-set $polybar "$HOME/.config/alexvZyl-polybar/launch.sh"
+set $polybar "$HOME/.config/polybar/ericmurphybar/launch.sh"
+#set $polybar "$HOME/.config/alexvZyl-polybar/launch.sh"
 
 ################   END OPTIONS ##################
 
@@ -49,8 +50,8 @@ set $magenta    #B48EAD
 # define colors for windows:
 # class		        	    border		bground		text		indicator	   child_border
 client.focused		    	$blue       $gray0      $white		$black          $black
-# client.unfocused	    	$blue       $blue       $gray		$black          $black
-# client.focused_inactive		$blue       $blue       $gray		$black          $black
+client.unfocused	    	$blue       $blue       $gray		$black          $black
+client.focused_inactive		$blue       $blue       $gray		$black          $black
 client.urgent		    	$red        $red        $red        $black          $red
 
 hide_edge_borders both
@@ -94,7 +95,9 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-bindsym $mod+shift+x exec i3lock -i ~/Pictures/Nordpapers/i3lock.png
+# blurred astronaut
+# bindsym $mod+shift+x exec i3lock -i ~/Pictures/Nordpapers/i3lock.png
+bindsym $mod+shift+x exec i3lock -i ~/Pictures/wallpapers/wall_blur.png
 bindsym $mod+w exec --no-startup-id firefox &
 bindsym $mod+y exec --no-startup-id microsoft-edge-stable &
 
@@ -124,6 +127,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty 
+bindsym $mod+shift+Return exec alacritty --working-directory ~/uis/master/ &
 
 bindsym $mod+ctrl+Tab workspace next
 bindsym $mod+ctrl+shift+Tab workspace prev
@@ -302,7 +306,16 @@ assign [class="discord"] $ws9
 # allow for swiping with 3 fingers left/right to swap workspace
 # see .config/libinput-gestures-setup.conf
 exec --no-startup-id libinput-gestures-setup start
+exec_always --no-startup-id $HOME/Downloads/xborder/xborders -c $HOME/.config/xborder/config.json
 
 # Toggle the inactive opacity for picom.
 bindsym $mod+o exec ~/.config/alexvZyl-picom/scripts/toggle-picom-inactive-opacity.sh && polybar-msg action "#read-mode.exec"
 
+############## SCRATCHPAD ##################
+bindsym $mod+u [class="Alacritty"] scratchpad show
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+u move scratchpad
+
+# Show the first scratchpad window
+#bindsym $mod+minus scratchpad show

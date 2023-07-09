@@ -44,8 +44,8 @@ path+=('/home/ebygd/go/bin')
 export PATH
 
 
-alias l="ls -la --color=auto"
-alias ls="ls --color=auto"
+alias l="ls -latr --color=auto"
+alias ls="ls -tr --color=auto"
 alias systemctllist="systemctl list-units --type=service"
 alias grep="grep --color=auto"
 
